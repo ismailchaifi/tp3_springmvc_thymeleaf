@@ -27,8 +27,14 @@ public class HospitalApplication {
                             RendezVousRepository rendezVousRepository) {
         return args -> {
             service.savePatient(Patient.builder().nom("Patient 1").dateNaissance(new Date(100, 9, 21)).malade(false).score(9).build());
-            service.savePatient(Patient.builder().nom("Patient 2").dateNaissance(new Date(99, 1, 13)).malade(false).score(8).build());
-            service.savePatient(Patient.builder().nom("Patient 3").dateNaissance(new Date(102, 3, 20)).malade(true).score(21).build());
+            service.savePatient(Patient.builder().nom("Patient 1").dateNaissance(new Date(99, 1, 13)).malade(false).score(8).build());
+            service.savePatient(Patient.builder().nom("Patient 1").dateNaissance(new Date(102, 3, 20)).malade(true).score(21).build());
+            service.savePatient(Patient.builder().nom("Patient 1").dateNaissance(new Date(100, 9, 21)).malade(false).score(9).build());
+            service.savePatient(Patient.builder().nom("Patient 1").dateNaissance(new Date(99, 1, 13)).malade(false).score(8).build());
+            service.savePatient(Patient.builder().nom("Patient 1").dateNaissance(new Date(102, 3, 20)).malade(true).score(21).build());
+            service.savePatient(Patient.builder().nom("Patient 7").dateNaissance(new Date(100, 9, 21)).malade(false).score(9).build());
+            service.savePatient(Patient.builder().nom("Patient 8").dateNaissance(new Date(99, 1, 13)).malade(false).score(8).build());
+            service.savePatient(Patient.builder().nom("Patient 9").dateNaissance(new Date(102, 3, 20)).malade(true).score(21).build());
 
             /*
             List<Patient> patients = patientRepository.findAll();

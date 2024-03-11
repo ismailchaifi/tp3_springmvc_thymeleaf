@@ -16,7 +16,9 @@ public class Patient {
     private Date dateNaissance;
     private boolean malade;
     private int score;
-    @OneToMany(mappedBy = "patient", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "patient",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
     private Collection<RendezVous> rendezVous;
 
 }

@@ -18,6 +18,6 @@ public class RendezVous {
     private Patient patient;
     @ManyToOne @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Medecin medecin;
-    @OneToOne(mappedBy = "rendezVous")
+    @OneToOne(mappedBy = "rendezVous", cascade = CascadeType.ALL)
     private Consultation consultation;
 }
