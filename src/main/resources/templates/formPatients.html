@@ -8,45 +8,38 @@
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
 </head>
 <body>
-<div layout:fragment="content1" class="offset-1">
-    <form method="post" th:action="@{save}">
-        <div class="mb-3">
-            <label>
-                Nom
-                <input class="form-control"
-                       type="text"
-                       name="nom"
-                       th:value="${patient.nom}">
-            </label>
+<div layout:fragment="content1" class="offset-4">
+    <form method="post" th:action="@{save(page=${page}, keyword=${keyword})}">
+        <div class="col-md-6 mb-3">
+            <label>Nom</label>
+            <input class="form-control"
+                   type="text"
+                   name="nom"
+                   th:value="${patient.nom}">
             <span class="text-danger" th:errors="${patient.nom}"></span>
         </div>
-        <div class="mb-3">
-            <label>
-                Date de naissance
-                <input class="form-control"
-                       type="date"
-                       name="dateNaissance"
-                       th:value="${patient.dateNaissance}">
-            </label>
+        <div class="col-md-6 mb-3">
+            <label>Date de naissance</label>
+            <input class="form-control"
+                   type="date"
+                   name="dateNaissance"
+                   th:value="${patient.dateNaissance}">
             <span class="text-danger" th:errors="${patient.dateNaissance}"></span>
         </div>
-        <div class="mb-3">
-            <label>
-                Malade
-                <input type="checkbox"
-                       name="malade"
-                       th:value="${patient.malade}">
-            </label>
+        <div class="col-md-6 mb-3">
+            <label>Malade</label>
+            <input type="checkbox"
+                   name="malade"
+                   th:value="${patient.malade}">
             <span class="text-danger" th:errors="${patient.malade}"></span>
         </div>
-        <div class="mb-3">
-            <label>
-                Score
-                <input class="form-control"
-                       type="text"
-                       name="score"
-                       th:value="${patient.score}">
-            </label>
+        <div class="col-md-6 mb-3">
+            <label>Score</label>
+            <input class="form-control"
+                   type="text"
+                   name="score"
+                   th:value="${patient.score}">
+
             <span class="text-danger" th:errors="${patient.score}"></span>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
