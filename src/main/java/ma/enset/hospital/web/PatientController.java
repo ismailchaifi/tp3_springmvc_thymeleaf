@@ -23,7 +23,7 @@ public class PatientController {
     @Autowired
     private HospitalServiceImpl service;
 
-    @GetMapping("/index")
+    @GetMapping("user/index")
     public String index(Model model,
                         @RequestParam(value = "page", defaultValue = "0") int page,
                         @RequestParam(value = "size", defaultValue = "4") int size,
@@ -36,36 +36,36 @@ public class PatientController {
         return "patients";
     }
 
-    @GetMapping("/delete")
+    @GetMapping("admin/delete")
     public String delete(@RequestParam(value = "id") String id,
                          @RequestParam(value = "keyword", defaultValue = "") String keyword,
                          @RequestParam(value = "page", defaultValue = "0") int page) {
         patientRepository.deletePatientById(id);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
+        return "redirect:/user/index?page=" + page + "&keyword=" + keyword;
     }
 
     @GetMapping("/")
     public String home() {
-        return "redirect:/index";
+        return "redirect:/user/index";
     }
 
-    @GetMapping("/formPatients")
+    @GetMapping("admin/formPatients")
     public String formPatients(Model model) {
         model.addAttribute("patient", new Patient());
         return "formPatients";
     }
 
-    @PostMapping(path = "/save")
+    @PostMapping(path = "admin/save")
     public String save(@Valid Patient patient,
                        BindingResult bindingResult,
                        @RequestParam(value = "keyword", defaultValue = "") String keyword,
                        @RequestParam(value = "page", defaultValue = "0") int page) {
         if (bindingResult.hasErrors()) return "formPatients";
         service.savePatient(patient);
-        return "redirect:/index?page=" + page + "&keyword=" + keyword;
+        return "redirect:/user/index?page=" + page + "&keyword=" + keyword;
     }
 
-    @GetMapping("/edit")
+    @GetMapping("admin/edit")
     public String editPatient(Model model,
                               @RequestParam(value = "id") String id,
                               @RequestParam(value = "keyword", defaultValue = "") String keyword,

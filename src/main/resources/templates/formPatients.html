@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <title>Formulaire patients</title>
     <link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.js"></script>
 </head>
 <body>
 <div layout:fragment="content1" class="offset-4">
-    <form method="post" th:action="@{save(page=${page}, keyword=${keyword})}">
+    <form method="post" th:action="@{/admin/save(page=${page}, keyword=${keyword})}">
         <div class="col-md-6 mb-3">
             <label>Nom</label>
             <input class="form-control"
