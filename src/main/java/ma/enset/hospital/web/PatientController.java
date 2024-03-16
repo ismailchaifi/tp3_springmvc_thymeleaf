@@ -7,6 +7,7 @@ import ma.enset.hospital.service.HospitalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,6 +38,7 @@ public class PatientController {
     }
 
     @GetMapping("admin/delete")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String delete(@RequestParam(value = "id") String id,
                          @RequestParam(value = "keyword", defaultValue = "") String keyword,
                          @RequestParam(value = "page", defaultValue = "0") int page) {
@@ -50,12 +52,14 @@ public class PatientController {
     }
 
     @GetMapping("admin/formPatients")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String formPatients(Model model) {
         model.addAttribute("patient", new Patient());
         return "formPatients";
     }
 
     @PostMapping(path = "admin/save")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String save(@Valid Patient patient,
                        BindingResult bindingResult,
                        @RequestParam(value = "keyword", defaultValue = "") String keyword,
@@ -66,6 +70,7 @@ public class PatientController {
     }
 
     @GetMapping("admin/edit")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String editPatient(Model model,
                               @RequestParam(value = "id") String id,
                               @RequestParam(value = "keyword", defaultValue = "") String keyword,
